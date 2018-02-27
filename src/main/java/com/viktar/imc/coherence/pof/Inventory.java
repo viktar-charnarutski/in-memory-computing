@@ -76,4 +76,20 @@ public class Inventory extends AbstractEvolvable implements EvolvablePortableObj
     public String toString() {
         return String.format("Inventory[productId=%s, stockLevel=%d]", productId, stockLevel);
     }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public long getStockLevel() {
+        return stockLevel;
+    }
+
+    public void setStockLevel(long stockLevel) {
+        this.stockLevel = stockLevel;
+    }
 }
