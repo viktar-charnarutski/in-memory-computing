@@ -1,8 +1,23 @@
 package com.viktar.imc.coherence.vacplanner;
 
+import com.tangosol.io.AbstractEvolvable;
+import com.tangosol.io.pof.EvolvablePortableObject;
+import com.tangosol.io.pof.PofReader;
+import com.tangosol.io.pof.PofWriter;
+
+import java.io.IOException;
 import java.net.URL;
 
-public class Hotel {
+public class Hotel extends AbstractEvolvable implements EvolvablePortableObject {
+
+    private final static int VERSION = 0;
+
+    private static final int NAME_INDEX = 0;
+    private static final int ADDRESS_INDEX = 1;
+    private static final int TYPE_INDEX = 2;
+    private static final int STARS_INDEX = 3;
+    private static final int RATING_INDEX = 4;
+    private static final int URL_INDEX = 5;
 
     private String name;
     private String address;
@@ -93,5 +108,31 @@ public class Hotel {
     public String toString() {
         return String.format("Hotel[name=%s, address=%s, type=%s, stars=%s, rating=%s, url=%s]",
                 name, address, type, stars, rating, url);
+    }
+
+    @Override
+    public int getImplVersion() {
+        return VERSION;
+    }
+
+    @Override
+    public void readExternal(PofReader pofReader) throws IOException {
+        name = pofReader.readString(NAME_INDEX);
+        address = pofReader.readString(ADDRESS_INDEX);
+        type = pofReader.readString(TYPE_INDEX);
+        stars = pofReader.readDouble(STARS_INDEX);
+        rating = pofReader.readDouble(RATING_INDEX);
+        url = new URL(pofReader.readString(URL_INDEX));
+
+    }
+
+    @Override
+    public void writeExternal(PofWriter pofWriter) throws IOException {
+        pofWriter.writeString(NAME_INDEX, name);
+        pofWriter.writeString(ADDRESS_INDEX, address);
+        pofWriter.writeString(TYPE_INDEX, type);
+        pofWriter.writeDouble(STARS_INDEX, stars);
+        pofWriter.writeDouble(RATING_INDEX, rating);
+        pofWriter.writeString(URL_INDEX, url.toString());
     }
 }
