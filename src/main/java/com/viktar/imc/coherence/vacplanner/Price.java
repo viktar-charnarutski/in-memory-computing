@@ -1,4 +1,4 @@
-package com.viktar.imc.coherence.pof;
+package com.viktar.imc.coherence.vacplanner;
 
 public class Price {
 

@@ -1,4 +1,4 @@
-package com.viktar.imc.coherence.pof;
+package com.viktar.imc.coherence.vacplanner;
 
 import java.net.URL;
 
