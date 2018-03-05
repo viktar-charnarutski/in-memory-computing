@@ -1,9 +1,25 @@
 package com.viktar.imc.coherence.vacplanner;
 
+import com.tangosol.io.AbstractEvolvable;
+import com.tangosol.io.pof.EvolvablePortableObject;
+import com.tangosol.io.pof.PofReader;
+import com.tangosol.io.pof.PofWriter;
+
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 
-public class Trip {
+public class Trip extends AbstractEvolvable implements EvolvablePortableObject {
+
+    private final static int VERSION = 0;
+
+    private static final int DEPARTURE_INDEX = 0;
+    private static final int DESTINATION_INDEX = 1;
+    private static final int START_DATE_INDEX = 2;
+    private static final int END_DATE_INDEX = 3;
+    private static final int PRICE_INDEX = 4;
+    private static final int HOTEL_INDEX = 5;
+    private static final int URL_INDEX = 6;
 
     private String departure;
     private String destination;
@@ -101,5 +117,32 @@ public class Trip {
     public String toString() {
         return String.format("FlightHotelBundle[departure=%s, destination=%s, startDate=%s, endDate=%s, price=%s, hotel=%s, url=%s]",
                 departure, destination, startDate, endDate, price, hotel, url);
+    }
+
+    @Override
+    public int getImplVersion() {
+        return VERSION;
+    }
+
+    @Override
+    public void readExternal(PofReader pofReader) throws IOException {
+        destination = pofReader.readString(DESTINATION_INDEX);
+        departure = pofReader.readString(DEPARTURE_INDEX);
+        startDate = pofReader.readLocalDate(START_DATE_INDEX);
+        endDate = pofReader.readLocalDate(END_DATE_INDEX);
+        price = pofReader.readObject(PRICE_INDEX);
+        hotel = pofReader.readObject(HOTEL_INDEX);
+        url = new URL(pofReader.readString(URL_INDEX));
+    }
+
+    @Override
+    public void writeExternal(PofWriter pofWriter) throws IOException {
+        pofWriter.writeString(DESTINATION_INDEX, destination);
+        pofWriter.writeString(DEPARTURE_INDEX, departure);
+        pofWriter.writeDate(START_DATE_INDEX, startDate);
+        pofWriter.writeDate(END_DATE_INDEX, endDate);
+        pofWriter.writeObject(PRICE_INDEX, price);
+        pofWriter.writeObject(HOTEL_INDEX, hotel);
+        pofWriter.writeString(URL_INDEX, url.toString());
     }
 }
