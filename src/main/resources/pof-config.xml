@@ -20,6 +20,10 @@
 			<type-id>1003</type-id>
 			<class-name>com.viktar.imc.coherence.vacplanner.Price</class-name>
 		</user-type>
+		<user-type>
+			<type-id>1004</type-id>
+			<class-name>com.viktar.imc.coherence.vacplanner.Trip</class-name>
+		</user-type>
 	</user-type-list>
 
     <enable-references>true</enable-references>
