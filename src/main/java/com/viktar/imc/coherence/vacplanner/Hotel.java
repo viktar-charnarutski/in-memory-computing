@@ -85,24 +85,24 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
 
         if (Double.compare(hotel.stars, stars) != 0) return false;
         if (Double.compare(hotel.rating, rating) != 0) return false;
-        if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
-        if (address != null ? !address.equals(hotel.address) : hotel.address != null) return false;
-        if (type != null ? !type.equals(hotel.type) : hotel.type != null) return false;
-        return url != null ? url.equals(hotel.url) : hotel.url == null;
+        if (!name.equals(hotel.name)) return false;
+        if (!address.equals(hotel.address)) return false;
+        if (!type.equals(hotel.type)) return false;
+        return url.equals(hotel.url);
     }
 
     @Override
     public int hashCode() {
         int result;
         long temp;
-        result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = name.hashCode();
+        result = 31 * result + address.hashCode();
+        result = 31 * result + type.hashCode();
         temp = Double.doubleToLongBits(stars);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(rating);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (url != null ? url.hashCode() : 0);
+        result = 31 * result + url.hashCode();
         return result;
     }
 
