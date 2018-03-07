@@ -20,7 +20,9 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
     public static final int URL_INDEX = 5;
 
     private String name;
+    // TODO: extract to a separate object
     private String address;
+    // TODO: extract to an enum
     private String type;
     private double stars;
     private double rating;
