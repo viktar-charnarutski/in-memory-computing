@@ -10,14 +10,14 @@ import java.net.URL;
 
 public class Hotel extends AbstractEvolvable implements EvolvablePortableObject {
 
-    private final static int VERSION = 0;
+    public final static int VERSION = 0;
 
-    private static final int NAME_INDEX = 0;
-    private static final int ADDRESS_INDEX = 1;
-    private static final int TYPE_INDEX = 2;
-    private static final int STARS_INDEX = 3;
-    private static final int RATING_INDEX = 4;
-    private static final int URL_INDEX = 5;
+    public static final int NAME_INDEX = 0;
+    public static final int ADDRESS_INDEX = 1;
+    public static final int TYPE_INDEX = 2;
+    public static final int STARS_INDEX = 3;
+    public static final int RATING_INDEX = 4;
+    public static final int URL_INDEX = 5;
 
     private String name;
     private String address;
@@ -100,7 +100,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(rating);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + url.hashCode();
+        result = 31 * result + (url != null ? url.hashCode() : 0);
         return result;
     }
 
