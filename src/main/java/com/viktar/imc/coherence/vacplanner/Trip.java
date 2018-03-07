@@ -11,23 +11,23 @@ import java.time.LocalDate;
 
 public class Trip extends AbstractEvolvable implements EvolvablePortableObject {
 
-    public final static int VERSION = 0;
+    private final static int VERSION = 0;
 
-    public static final int DEPARTURE_INDEX = 0;
-    public static final int DESTINATION_INDEX = 1;
-    public static final int START_DATE_INDEX = 2;
-    public static final int END_DATE_INDEX = 3;
-    public static final int PRICE_INDEX = 4;
-    public static final int HOTEL_INDEX = 5;
-    public static final int URL_INDEX = 6;
+    private static final int DEPARTURE_INDEX = 0;
+    private static final int DESTINATION_INDEX = 1;
+    private static final int START_DATE_INDEX = 2;
+    private static final int END_DATE_INDEX = 3;
+    private static final int PRICE_INDEX = 4;
+    private static final int HOTEL_INDEX = 5;
+    private static final int URL_INDEX = 6;
 
-    public String departure;
-    public String destination;
-    public LocalDate startDate;
-    public LocalDate endDate;
-    public Price price;
-    public Hotel hotel;
-    public URL url;
+    private String departure;
+    private String destination;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private Price price;
+    private Hotel hotel;
+    private URL url;
 
     public String getDeparture() {
         return departure;
