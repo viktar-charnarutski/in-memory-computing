@@ -57,7 +57,7 @@ public class Price extends AbstractEvolvable implements EvolvablePortableObject 
 
     @Override
     public String toString() {
-        return String.format("Price[originalPriceInUsd=%s, discountPriceInUsd=%s]", originalPriceInUsd, discountPriceInUsd);
+        return String.format("Price[originalPriceInUsd=$%s, discountPriceInUsd=$%s]", originalPriceInUsd, discountPriceInUsd);
     }
 
     @Override
