@@ -9,10 +9,10 @@ import java.io.IOException;
 
 public class Price extends AbstractEvolvable implements EvolvablePortableObject {
 
-    public final static int VERSION = 0;
+    private final static int VERSION = 0;
 
-    public static final int ORIG_PRICE_INDEX = 0;
-    public static final int DISC_PRICE_INDEX = 1;
+    private static final int ORIG_PRICE_INDEX = 0;
+    private static final int DISC_PRICE_INDEX = 1;
 
     private double originalPriceInUsd;
     private double discountPriceInUsd;
@@ -57,7 +57,7 @@ public class Price extends AbstractEvolvable implements EvolvablePortableObject 
 
     @Override
     public String toString() {
-        return String.format("Price[originalPriceInUsd=$%s, discountPriceInUsd=$%s]", originalPriceInUsd, discountPriceInUsd);
+        return String.format("Price[originalPriceInUsd=%s, discountPriceInUsd=%s]", originalPriceInUsd, discountPriceInUsd);
     }
 
     @Override
