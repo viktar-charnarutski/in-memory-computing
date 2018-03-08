@@ -21,13 +21,13 @@ public class Trip extends AbstractEvolvable implements EvolvablePortableObject {
     public static final int HOTEL_INDEX = 5;
     public static final int URL_INDEX = 6;
 
-    public String departure;
-    public String destination;
-    public LocalDate startDate;
-    public LocalDate endDate;
-    public Price price;
-    public Hotel hotel;
-    public URL url;
+    private String departure;
+    private String destination;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private Price price;
+    private Hotel hotel;
+    private URL url;
 
     public String getDeparture() {
         return departure;
