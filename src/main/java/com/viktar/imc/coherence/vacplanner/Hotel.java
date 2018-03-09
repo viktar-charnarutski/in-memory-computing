@@ -124,8 +124,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
         type = pofReader.readString(TYPE_INDEX);
         stars = pofReader.readDouble(STARS_INDEX);
         rating = pofReader.readDouble(RATING_INDEX);
-        url = new URL(pofReader.readString(URL_INDEX));
-
+        url = pofReader.readObject(URL_INDEX);
     }
 
     @Override
