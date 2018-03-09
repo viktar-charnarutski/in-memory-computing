@@ -47,7 +47,8 @@ public class PriceTest extends PofBeanTest<Price> {
     @Test
     @Override
     public void toStringMethod() {
-        assertEquals("Price[originalPriceInUsd=$99.99, discountPriceInUsd=$9.99]", getPopulatedBeanInstance().toString());
+        assertEquals(String.format("Price[originalPriceInUsd=$%s, discountPriceInUsd=$%s]", ORIGINAL_PRICE, DISCOUNT_PRICE),
+                getPopulatedBeanInstance().toString());
     }
 
     @Override
