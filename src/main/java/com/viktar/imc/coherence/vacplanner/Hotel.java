@@ -135,6 +135,6 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
         pofWriter.writeString(TYPE_INDEX, type);
         pofWriter.writeDouble(STARS_INDEX, stars);
         pofWriter.writeDouble(RATING_INDEX, rating);
-        pofWriter.writeString(URL_INDEX, url.toString());
+        pofWriter.writeObject(URL_INDEX, url);
     }
 }
