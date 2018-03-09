@@ -13,16 +13,19 @@ import static org.mockito.Mockito.*;
 
 public class PriceTest extends PofBeanTest<Price> {
 
+    private static final double ORIGINAL_PRICE = 99.99;
+    private static final double DISCOUNT_PRICE = 9.99;
+
     @Test
     @Override
     public void readExternal() throws IOException {
-        when(pofReader.readDouble(Price.ORIG_PRICE_INDEX)).thenReturn(99.99);
-        when(pofReader.readDouble(Price.DISC_PRICE_INDEX)).thenReturn(9.99);
+        when(pofReader.readDouble(Price.ORIG_PRICE_INDEX)).thenReturn(ORIGINAL_PRICE);
+        when(pofReader.readDouble(Price.DISC_PRICE_INDEX)).thenReturn(DISCOUNT_PRICE);
 
         super.readExternal();
 
-        assertTrue(99.99 == beanInstance.getOriginalPriceInUsd());
-        assertTrue(9.99 == beanInstance.getDiscountPriceInUsd());
+        assertTrue(ORIGINAL_PRICE == beanInstance.getOriginalPriceInUsd());
+        assertTrue(DISCOUNT_PRICE == beanInstance.getDiscountPriceInUsd());
     }
 
     @Test
@@ -30,8 +33,8 @@ public class PriceTest extends PofBeanTest<Price> {
     public void writeExternal() throws IOException {
         super.writeExternal();
 
-        verify(pofWriter, times(1)).writeDouble(eq(Price.ORIG_PRICE_INDEX), eq(99.99));
-        verify(pofWriter, times(1)).writeDouble(eq(Price.DISC_PRICE_INDEX), eq(9.99));
+        verify(pofWriter, times(1)).writeDouble(eq(Price.ORIG_PRICE_INDEX), eq(ORIGINAL_PRICE));
+        verify(pofWriter, times(1)).writeDouble(eq(Price.DISC_PRICE_INDEX), eq(DISCOUNT_PRICE));
     }
 
     @Test
