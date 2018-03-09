@@ -59,8 +59,8 @@ public class PriceTest extends PofBeanTest<Price> {
     @Override
     protected Price getPopulatedBeanInstance() {
         Price bean = new Price();
-        bean.setOriginalPriceInUsd(99.99);
-        bean.setDiscountPriceInUsd(9.99);
+        bean.setOriginalPriceInUsd(ORIGINAL_PRICE);
+        bean.setDiscountPriceInUsd(DISCOUNT_PRICE);
         return bean;
     }
 
