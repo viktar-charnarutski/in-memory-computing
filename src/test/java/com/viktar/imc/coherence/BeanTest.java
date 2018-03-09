@@ -9,6 +9,10 @@ import static org.junit.Assert.*;
 
 public abstract class BeanTest<T> extends MockTest {
 
+    protected static final String UNIQUE_STR = String.valueOf(System.currentTimeMillis());
+
+    protected static final long UNIQUE_NUM = System.currentTimeMillis();
+
     protected abstract T getEmptyBeanInstance();
 
     protected abstract T getPopulatedBeanInstance();
