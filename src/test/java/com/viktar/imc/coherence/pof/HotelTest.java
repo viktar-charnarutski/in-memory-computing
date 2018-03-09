@@ -22,8 +22,6 @@ public class HotelTest extends PofBeanTest<Hotel> {
     private static final double RATING = 5.0;
     private static URL URL;
 
-    private static final String UNIQUE_STR = String.valueOf(System.currentTimeMillis());
-    private static final long UNIQUE_NUM = System.currentTimeMillis();
     private static URL UNIQUE_URL;
 
     @Before

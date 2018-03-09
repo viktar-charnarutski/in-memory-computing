@@ -67,8 +67,8 @@ public class PriceTest extends PofBeanTest<Price> {
     @Override
     protected Price getUniquePopulatedBeanInstance() {
         Price bean = new Price();
-        bean.setOriginalPriceInUsd(System.currentTimeMillis());
-        bean.setDiscountPriceInUsd(System.currentTimeMillis());
+        bean.setOriginalPriceInUsd(UNIQUE_NUM);
+        bean.setDiscountPriceInUsd(UNIQUE_NUM);
         return bean;
     }
 
@@ -77,11 +77,11 @@ public class PriceTest extends PofBeanTest<Price> {
         List<Price> beans = super.getAllVarietiesOfTheBeanInstance();
 
         Price bean = getEmptyBeanInstance();
-        bean.setOriginalPriceInUsd(System.currentTimeMillis());
+        bean.setOriginalPriceInUsd(UNIQUE_NUM);
         beans.add(bean);
 
         bean = getEmptyBeanInstance();
-        bean.setDiscountPriceInUsd(System.currentTimeMillis());
+        bean.setDiscountPriceInUsd(UNIQUE_NUM);
         beans.add(bean);
 
         return beans;
