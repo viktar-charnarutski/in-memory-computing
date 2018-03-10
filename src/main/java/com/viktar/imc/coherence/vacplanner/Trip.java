@@ -115,7 +115,7 @@ public class Trip extends AbstractEvolvable implements EvolvablePortableObject {
 
     @Override
     public String toString() {
-        return String.format("FlightHotelBundle[departure=%s, destination=%s, startDate=%s, endDate=%s, price=%s, hotel=%s, url=%s]",
+        return String.format("Trip[departure=%s, destination=%s, startDate=%s, endDate=%s, price=%s, hotel=%s, url=%s]",
                 departure, destination, startDate, endDate, price, hotel, url);
     }
 
