@@ -1,6 +1,7 @@
 package com.viktar.imc.coherence.pof;
 
 import com.viktar.imc.coherence.vacplanner.Hotel;
+import com.viktar.imc.coherence.vacplanner.HotelType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ public class HotelTest extends PofBeanTest<Hotel> {
 
     private static final String NAME = "Hilton";
     private static final String ADDRESS = "505 California St, San Francisco, 94105, CA, US";
-    private static final String TYPE = "Resort";
+    private static final HotelType TYPE = HotelType.RESORT;
     private static final double STARS = 4.5;
     private static final double RATING = 5.0;
     private static URL URL;
@@ -35,7 +36,7 @@ public class HotelTest extends PofBeanTest<Hotel> {
     public void readExternal() throws IOException {
         when(pofReader.readString(Hotel.NAME_INDEX)).thenReturn(NAME);
         when(pofReader.readString(Hotel.ADDRESS_INDEX)).thenReturn(ADDRESS);
-        when(pofReader.readString(Hotel.TYPE_INDEX)).thenReturn(TYPE);
+        when(pofReader.readObject(Hotel.TYPE_INDEX)).thenReturn(TYPE);
         when(pofReader.readDouble(Hotel.STARS_INDEX)).thenReturn(STARS);
         when(pofReader.readDouble(Hotel.RATING_INDEX)).thenReturn(RATING);
         when(pofReader.readObject(Hotel.URL_INDEX)).thenReturn(URL);
@@ -48,7 +49,6 @@ public class HotelTest extends PofBeanTest<Hotel> {
         assertTrue(STARS == beanInstance.getStars());
         assertTrue(RATING == beanInstance.getRating());
         assertEquals(URL, beanInstance.getUrl());
-
     }
 
     @Test
@@ -58,7 +58,7 @@ public class HotelTest extends PofBeanTest<Hotel> {
 
         verify(pofWriter, times(1)).writeString(eq(Hotel.NAME_INDEX), eq(NAME));
         verify(pofWriter, times(1)).writeString(eq(Hotel.ADDRESS_INDEX), eq(ADDRESS));
-        verify(pofWriter, times(1)).writeString(eq(Hotel.TYPE_INDEX), eq(TYPE));
+        verify(pofWriter, times(1)).writeObject(eq(Hotel.TYPE_INDEX), eq(TYPE));
         verify(pofWriter, times(1)).writeDouble(eq(Hotel.STARS_INDEX), eq(STARS));
         verify(pofWriter, times(1)).writeDouble(eq(Hotel.RATING_INDEX), eq(RATING));
         verify(pofWriter, times(1)).writeObject(eq(Hotel.URL_INDEX), eq(URL));
@@ -100,7 +100,7 @@ public class HotelTest extends PofBeanTest<Hotel> {
         Hotel bean = new Hotel();
         bean.setName(UNIQUE_STR);
         bean.setAddress(UNIQUE_STR);
-        bean.setType(UNIQUE_STR);
+        bean.setType(HotelType.CASINO);
         bean.setStars(UNIQUE_NUM);
         bean.setRating(UNIQUE_NUM);
         bean.setUrl(UNIQUE_URL);
@@ -128,7 +128,7 @@ public class HotelTest extends PofBeanTest<Hotel> {
         beans.add(bean);
 
         bean = getEmptyBeanInstance();
-        bean.setType(UNIQUE_STR);
+        bean.setType(HotelType.BED_AND_BREAKFAST);
         beans.add(bean);
 
         bean = getPopulatedBeanInstance();
