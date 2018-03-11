@@ -22,8 +22,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
     private String name;
     // TODO: extract to a separate object
     private String address;
-    // TODO: extract to an enum
-    private String type;
+    private HotelType type;
     private double stars;
     private double rating;
     private URL url;
@@ -44,11 +43,11 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
         this.address = address;
     }
 
-    public String getType() {
+    public HotelType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(HotelType type) {
         this.type = type;
     }
 
@@ -87,7 +86,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
         if (Double.compare(hotel.rating, rating) != 0) return false;
         if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
         if (address != null ? !address.equals(hotel.address) : hotel.address != null) return false;
-        if (type != null ? !type.equals(hotel.type) : hotel.type != null) return false;
+        if (type != hotel.type) return false;
         return url != null ? url.equals(hotel.url) : hotel.url == null;
     }
 
@@ -121,7 +120,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
     public void readExternal(PofReader pofReader) throws IOException {
         name = pofReader.readString(NAME_INDEX);
         address = pofReader.readString(ADDRESS_INDEX);
-        type = pofReader.readString(TYPE_INDEX);
+        type = pofReader.readObject(TYPE_INDEX);
         stars = pofReader.readDouble(STARS_INDEX);
         rating = pofReader.readDouble(RATING_INDEX);
         url = pofReader.readObject(URL_INDEX);
@@ -131,7 +130,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
     public void writeExternal(PofWriter pofWriter) throws IOException {
         pofWriter.writeString(NAME_INDEX, name);
         pofWriter.writeString(ADDRESS_INDEX, address);
-        pofWriter.writeString(TYPE_INDEX, type);
+        pofWriter.writeObject(TYPE_INDEX, type);
         pofWriter.writeDouble(STARS_INDEX, stars);
         pofWriter.writeDouble(RATING_INDEX, rating);
         pofWriter.writeObject(URL_INDEX, url);
