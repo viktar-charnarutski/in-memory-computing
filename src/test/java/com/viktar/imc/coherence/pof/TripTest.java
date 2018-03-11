@@ -20,12 +20,11 @@ public class TripTest extends PofBeanTest<Trip> {
 
     private static final String DEPARTURE = "SFO";
     private static final String DESTINATION = "MBJ";
-    private static final int DAYS_BEFORE_START = 10;
-    private static final int DAYS_BEFORE_END = 15;
+
+    private static final LocalDate START_DATE = LocalDate.now().plusDays(10);
+    private static final LocalDate END_DATE = LocalDate.now().plusDays(15);
 
     private final URL URL = new URL("https://www.viktarx.com");
-    private final LocalDate startDate = LocalDate.now().plusDays(DAYS_BEFORE_START);
-    private final LocalDate endDate = LocalDate.now().plusDays(DAYS_BEFORE_END);;
 
     private Hotel hotel = new Hotel();
     private Price price = new Price();
@@ -51,8 +50,8 @@ public class TripTest extends PofBeanTest<Trip> {
     public void readExternal() throws IOException {
         when(pofReader.readString(Trip.DEPARTURE_INDEX)).thenReturn(DEPARTURE);
         when(pofReader.readString(Trip.DESTINATION_INDEX)).thenReturn(DESTINATION);
-        when(pofReader.readLocalDate(Trip.START_DATE_INDEX)).thenReturn(startDate);
-        when(pofReader.readLocalDate(Trip.END_DATE_INDEX)).thenReturn(endDate);
+        when(pofReader.readLocalDate(Trip.START_DATE_INDEX)).thenReturn(START_DATE);
+        when(pofReader.readLocalDate(Trip.END_DATE_INDEX)).thenReturn(END_DATE);
         when(pofReader.readObject(Trip.HOTEL_INDEX)).thenReturn(hotel);
         when(pofReader.readObject(Trip.PRICE_INDEX)).thenReturn(price);
         when(pofReader.readObject(Trip.URL_INDEX)).thenReturn(URL);
@@ -61,8 +60,8 @@ public class TripTest extends PofBeanTest<Trip> {
 
         assertEquals(DEPARTURE, beanInstance.getDeparture());
         assertEquals(DESTINATION, beanInstance.getDestination());
-        assertEquals(startDate, beanInstance.getStartDate());
-        assertEquals(endDate, beanInstance.getEndDate());
+        assertEquals(START_DATE, beanInstance.getStartDate());
+        assertEquals(END_DATE, beanInstance.getEndDate());
         assertEquals(hotel, beanInstance.getHotel());
         assertEquals(price, beanInstance.getPrice());
         assertEquals(URL, beanInstance.getUrl());
@@ -75,8 +74,8 @@ public class TripTest extends PofBeanTest<Trip> {
 
         verify(pofWriter, times(1)).writeString(eq(Trip.DEPARTURE_INDEX), eq(DEPARTURE));
         verify(pofWriter, times(1)).writeString(eq(Trip.DESTINATION_INDEX), eq(DESTINATION));
-        verify(pofWriter, times(1)).writeDate(eq(Trip.START_DATE_INDEX), eq(startDate));
-        verify(pofWriter, times(1)).writeDate(eq(Trip.END_DATE_INDEX), eq(endDate));
+        verify(pofWriter, times(1)).writeDate(eq(Trip.START_DATE_INDEX), eq(START_DATE));
+        verify(pofWriter, times(1)).writeDate(eq(Trip.END_DATE_INDEX), eq(END_DATE));
         verify(pofWriter, times(1)).writeObject(eq(Trip.PRICE_INDEX), eq(price));
         verify(pofWriter, times(1)).writeObject(eq(Trip.HOTEL_INDEX), eq(hotel));
         verify(pofWriter, times(1)).writeObject(eq(Trip.URL_INDEX), eq(URL));
@@ -95,8 +94,8 @@ public class TripTest extends PofBeanTest<Trip> {
         assertEquals(String.format("Trip[departure=%s, destination=%s, startDate=%s, endDate=%s, price=%s, hotel=%s, url=%s]",
                 DEPARTURE,
                 DESTINATION,
-                startDate,
-                endDate,
+                START_DATE,
+                END_DATE,
                 price,
                 hotel,
                 URL),
@@ -113,8 +112,8 @@ public class TripTest extends PofBeanTest<Trip> {
         Trip bean = new Trip();
         bean.setDeparture(DEPARTURE);
         bean.setDestination(DESTINATION);
-        bean.setStartDate(startDate);
-        bean.setEndDate(endDate);
+        bean.setStartDate(START_DATE);
+        bean.setEndDate(END_DATE);
         bean.setPrice(price);
         bean.setHotel(hotel);
         bean.setUrl(URL);
