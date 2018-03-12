@@ -84,6 +84,34 @@ public class Address extends AbstractEvolvable implements EvolvablePortableObjec
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+
+        Address address = (Address) o;
+
+        if (contactName != null ? !contactName.equals(address.contactName) : address.contactName != null) return false;
+        if (addressLine != null ? !addressLine.equals(address.addressLine) : address.addressLine != null) return false;
+        if (city != null ? !city.equals(address.city) : address.city != null) return false;
+        if (stateUs != address.stateUs) return false;
+        if (region != null ? !region.equals(address.region) : address.region != null) return false;
+        if (zipCode != null ? !zipCode.equals(address.zipCode) : address.zipCode != null) return false;
+        return country != null ? country.equals(address.country) : address.country == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = contactName != null ? contactName.hashCode() : 0;
+        result = 31 * result + (addressLine != null ? addressLine.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (stateUs != null ? stateUs.hashCode() : 0);
+        result = 31 * result + (region != null ? region.hashCode() : 0);
+        result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return String.format("Address[contactName=%s, addressLine=%s, city=%s, stateUs=%s, region=%s, zipCode=%s, country=%s]",
                 contactName, addressLine, city, stateUs, region, zipCode, country);
