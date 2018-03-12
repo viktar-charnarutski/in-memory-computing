@@ -98,7 +98,7 @@ public class Address extends AbstractEvolvable implements EvolvablePortableObjec
     public void readExternal(PofReader pofReader) throws IOException {
         contactName = pofReader.readString(CONTACT_NAME);
         addressLine = pofReader.readString(ADDRESS_LINE);
-        city = pofReader.readObject(CITY);
+        city = pofReader.readString(CITY);
         stateUs = pofReader.readObject(STATE_US);
         region = pofReader.readString(REGION);
         zipCode = pofReader.readString(ZIP_CODE);
