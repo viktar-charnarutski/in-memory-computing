@@ -1,9 +1,9 @@
-package com.viktar.imc.coherence.pof;
+package com.viktar.vacplanner.pof;
 
 import com.tangosol.io.pof.EvolvablePortableObject;
 import com.tangosol.io.pof.PofReader;
 import com.tangosol.io.pof.PofWriter;
-import com.viktar.imc.coherence.BeanTest;
+import com.viktar.vacplanner.BeanTest;
 import org.junit.Test;
 import org.mockito.Mock;
 

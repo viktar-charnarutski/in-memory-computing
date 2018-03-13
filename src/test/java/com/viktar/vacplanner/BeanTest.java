@@ -1,4 +1,4 @@
-package com.viktar.imc.coherence;
+package com.viktar.vacplanner;
 
 import org.junit.Test;
 

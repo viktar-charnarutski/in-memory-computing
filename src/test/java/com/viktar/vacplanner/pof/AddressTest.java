@@ -1,8 +1,5 @@
-package com.viktar.imc.coherence.pof;
+package com.viktar.vacplanner.pof;
 
-import com.viktar.imc.coherence.vacplanner.Address;
-import com.viktar.imc.coherence.vacplanner.Hotel;
-import com.viktar.imc.coherence.vacplanner.StateUs;
 import org.junit.Test;
 
 import java.io.IOException;
