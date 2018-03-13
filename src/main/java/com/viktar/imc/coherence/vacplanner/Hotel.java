@@ -20,8 +20,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
     public static final int URL_INDEX = 5;
 
     private String name;
-    // TODO: extract to a separate object
-    private String address;
+    private Address address;
     private HotelType type;
     private double stars;
     private double rating;
@@ -35,11 +34,11 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
         this.name = name;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
@@ -119,7 +118,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
     @Override
     public void readExternal(PofReader pofReader) throws IOException {
         name = pofReader.readString(NAME_INDEX);
-        address = pofReader.readString(ADDRESS_INDEX);
+        address = pofReader.readObject(ADDRESS_INDEX);
         type = pofReader.readObject(TYPE_INDEX);
         stars = pofReader.readDouble(STARS_INDEX);
         rating = pofReader.readDouble(RATING_INDEX);
@@ -129,7 +128,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
     @Override
     public void writeExternal(PofWriter pofWriter) throws IOException {
         pofWriter.writeString(NAME_INDEX, name);
-        pofWriter.writeString(ADDRESS_INDEX, address);
+        pofWriter.writeObject(ADDRESS_INDEX, address);
         pofWriter.writeObject(TYPE_INDEX, type);
         pofWriter.writeDouble(STARS_INDEX, stars);
         pofWriter.writeDouble(RATING_INDEX, rating);
