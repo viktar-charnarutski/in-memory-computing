@@ -1,4 +1,4 @@
-package com.viktar.imc.coherence.vacplanner;
+package com.viktar.vacplanner.pof;
 
 import com.tangosol.io.AbstractEvolvable;
 import com.tangosol.io.pof.EvolvablePortableObject;

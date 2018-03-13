@@ -1,4 +1,4 @@
-package com.viktar.imc.coherence.vacplanner;
+package com.viktar.vacplanner.pof;
 
 public enum HotelType {
     BED_AND_BREAKFAST,

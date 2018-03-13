@@ -10,15 +10,15 @@
 		<include>coherence-pof-config.xml</include>
 		<user-type>
 			<type-id>1001</type-id>
-			<class-name>com.viktar.imc.coherence.vacplanner.Hotel</class-name>
+			<class-name>com.viktar.vacplanner.pof.Hotel</class-name>
 		</user-type>
 		<user-type>
 			<type-id>1002</type-id>
-			<class-name>com.viktar.imc.coherence.vacplanner.Price</class-name>
+			<class-name>com.viktar.vacplanner.pof.Price</class-name>
 		</user-type>
 		<user-type>
 			<type-id>1003</type-id>
-			<class-name>com.viktar.imc.coherence.vacplanner.Trip</class-name>
+			<class-name>com.viktar.vacplanner.pof.Trip</class-name>
 		</user-type>
 	</user-type-list>
 
