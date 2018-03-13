@@ -1,9 +1,6 @@
 package com.viktar.imc.coherence.pof;
 
-import com.viktar.imc.coherence.vacplanner.Hotel;
-import com.viktar.imc.coherence.vacplanner.HotelType;
-import com.viktar.imc.coherence.vacplanner.Price;
-import com.viktar.imc.coherence.vacplanner.Trip;
+import com.viktar.imc.coherence.vacplanner.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,14 +26,23 @@ public class TripTest extends PofBeanTest<Trip> {
 
     private Hotel hotel = new Hotel();
     private Price price = new Price();
+    private Address address = new Address();
 
     public TripTest() throws Exception {
     }
 
     @Before
     public void setup() {
+        address.setContactName("Bob");
+        address.setAddressLine("6 Jones St, Apt.1");
+        address.setCity("San Francisco");
+        address.setZipCode("94102");
+        address.setStateUs(StateUs.CALIFORNIA);
+        address.setRegion("N/A");
+        address.setCountry("US");
+
         hotel.setName("Hilton");
-        hotel.setAddress("505 California St, San Francisco, 94105, CA, US");
+        hotel.setAddress(address);
         hotel.setType(HotelType.BED_AND_BREAKFAST);
         hotel.setStars(4.5);
         hotel.setRating(5.0);
