@@ -126,8 +126,8 @@ public class Trip extends AbstractEvolvable implements EvolvablePortableObject {
 
     @Override
     public void readExternal(PofReader pofReader) throws IOException {
-        destination = pofReader.readString(DESTINATION_INDEX);
         departure = pofReader.readString(DEPARTURE_INDEX);
+        destination = pofReader.readString(DESTINATION_INDEX);
         startDate = pofReader.readLocalDate(START_DATE_INDEX);
         endDate = pofReader.readLocalDate(END_DATE_INDEX);
         price = pofReader.readObject(PRICE_INDEX);
@@ -137,8 +137,8 @@ public class Trip extends AbstractEvolvable implements EvolvablePortableObject {
 
     @Override
     public void writeExternal(PofWriter pofWriter) throws IOException {
-        pofWriter.writeString(DESTINATION_INDEX, destination);
         pofWriter.writeString(DEPARTURE_INDEX, departure);
+        pofWriter.writeString(DESTINATION_INDEX, destination);
         pofWriter.writeDate(START_DATE_INDEX, startDate);
         pofWriter.writeDate(END_DATE_INDEX, endDate);
         pofWriter.writeObject(PRICE_INDEX, price);
