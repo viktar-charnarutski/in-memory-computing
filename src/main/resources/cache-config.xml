@@ -1,12 +1,24 @@
 <?xml version="1.0"?>
 
-<cache-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xmlns="http://xmlns.oracle.com/coherence/coherence-cache-config"
-              xsi:schemaLocation="http://xmlns.oracle.com/coherence/coherence-cache-config
-   coherence-cache-config.xsd">
+<!DOCTYPE cache-config SYSTEM "cache-config.dtd">
+
+<cache-config>
+    <defaults>
+        <serializer>
+            <instance>
+                <class-name>com.tangosol.io.pof.ConfigurablePofContext</class-name>
+                <init-params>
+                    <init-param>
+                        <param-type>String</param-type>
+                        <param-value>pof-config.xml</param-value>
+                    </init-param>
+                </init-params>
+            </instance>
+        </serializer>
+    </defaults>
     <caching-scheme-mapping>
         <cache-mapping>
-            <cache-name>inventory</cache-name>
+            <cache-name>vacation-planner</cache-name>
             <scheme-name>distributed</scheme-name>
         </cache-mapping>
     </caching-scheme-mapping>
