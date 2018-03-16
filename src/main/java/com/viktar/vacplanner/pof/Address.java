@@ -127,7 +127,7 @@ public class Address extends AbstractEvolvable implements EvolvablePortableObjec
         contactName = pofReader.readString(CONTACT_NAME);
         addressLine = pofReader.readString(ADDRESS_LINE);
         city = pofReader.readString(CITY);
-        stateUs = pofReader.readObject(STATE_US);
+        stateUs = StateUs.valueOf(pofReader.readString(STATE_US));
         region = pofReader.readString(REGION);
         zipCode = pofReader.readString(ZIP_CODE);
         country = pofReader.readString(COUNTRY);
@@ -138,7 +138,7 @@ public class Address extends AbstractEvolvable implements EvolvablePortableObjec
         pofWriter.writeString(CONTACT_NAME, contactName);
         pofWriter.writeString(ADDRESS_LINE, addressLine);
         pofWriter.writeString(CITY, city);
-        pofWriter.writeObject(STATE_US, stateUs);
+        pofWriter.writeString(STATE_US, stateUs.toString());
         pofWriter.writeString(REGION, region);
         pofWriter.writeString(ZIP_CODE, zipCode);
         pofWriter.writeString(COUNTRY, country);
