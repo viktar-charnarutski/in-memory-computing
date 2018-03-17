@@ -119,7 +119,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
     public void readExternal(PofReader pofReader) throws IOException {
         name = pofReader.readString(NAME_INDEX);
         address = pofReader.readObject(ADDRESS_INDEX);
-        type = pofReader.readObject(TYPE_INDEX);
+        type = HotelType.valueOf(pofReader.readString(TYPE_INDEX));
         stars = pofReader.readDouble(STARS_INDEX);
         rating = pofReader.readDouble(RATING_INDEX);
         url = pofReader.readObject(URL_INDEX);
@@ -129,7 +129,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
     public void writeExternal(PofWriter pofWriter) throws IOException {
         pofWriter.writeString(NAME_INDEX, name);
         pofWriter.writeObject(ADDRESS_INDEX, address);
-        pofWriter.writeObject(TYPE_INDEX, type);
+        pofWriter.writeString(TYPE_INDEX, type.toString());
         pofWriter.writeDouble(STARS_INDEX, stars);
         pofWriter.writeDouble(RATING_INDEX, rating);
         pofWriter.writeObject(URL_INDEX, url);
