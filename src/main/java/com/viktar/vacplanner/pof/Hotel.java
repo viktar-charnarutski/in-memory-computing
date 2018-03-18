@@ -122,7 +122,7 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
         type = HotelType.valueOf(pofReader.readString(TYPE_INDEX));
         stars = pofReader.readDouble(STARS_INDEX);
         rating = pofReader.readDouble(RATING_INDEX);
-        url = pofReader.readObject(URL_INDEX);
+        url = new URL(pofReader.readString(URL_INDEX));
     }
 
     @Override
@@ -132,6 +132,6 @@ public class Hotel extends AbstractEvolvable implements EvolvablePortableObject 
         pofWriter.writeString(TYPE_INDEX, type.toString());
         pofWriter.writeDouble(STARS_INDEX, stars);
         pofWriter.writeDouble(RATING_INDEX, rating);
-        pofWriter.writeObject(URL_INDEX, url);
+        pofWriter.writeString(URL_INDEX, url.toString());
     }
 }
