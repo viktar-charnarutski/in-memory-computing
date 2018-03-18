@@ -132,7 +132,7 @@ public class Trip extends AbstractEvolvable implements EvolvablePortableObject {
         endDate = pofReader.readLocalDate(END_DATE_INDEX);
         price = pofReader.readObject(PRICE_INDEX);
         hotel = pofReader.readObject(HOTEL_INDEX);
-        url = pofReader.readObject(URL_INDEX);
+        url = new URL(pofReader.readString(URL_INDEX));
     }
 
     @Override
@@ -143,6 +143,6 @@ public class Trip extends AbstractEvolvable implements EvolvablePortableObject {
         pofWriter.writeDate(END_DATE_INDEX, endDate);
         pofWriter.writeObject(PRICE_INDEX, price);
         pofWriter.writeObject(HOTEL_INDEX, hotel);
-        pofWriter.writeObject(URL_INDEX, url);
+        pofWriter.writeString(URL_INDEX, url.toString());
     }
 }
