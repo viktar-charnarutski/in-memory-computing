@@ -42,10 +42,10 @@ public class HotelTest extends PofBeanTest<Hotel> {
     public void readExternal() throws IOException {
         when(pofReader.readString(Hotel.NAME_INDEX)).thenReturn(NAME);
         when(pofReader.readObject(Hotel.ADDRESS_INDEX)).thenReturn(address);
-        when(pofReader.readObject(Hotel.TYPE_INDEX)).thenReturn(TYPE);
+        when(pofReader.readString(Hotel.TYPE_INDEX)).thenReturn(TYPE.toString());
         when(pofReader.readDouble(Hotel.STARS_INDEX)).thenReturn(STARS);
         when(pofReader.readDouble(Hotel.RATING_INDEX)).thenReturn(RATING);
-        when(pofReader.readObject(Hotel.URL_INDEX)).thenReturn(URL);
+        when(pofReader.readString(Hotel.URL_INDEX)).thenReturn(URL.toString());
 
         super.readExternal();
 
@@ -64,10 +64,10 @@ public class HotelTest extends PofBeanTest<Hotel> {
 
         verify(pofWriter, times(1)).writeString(eq(Hotel.NAME_INDEX), eq(NAME));
         verify(pofWriter, times(1)).writeObject(eq(Hotel.ADDRESS_INDEX), eq(address));
-        verify(pofWriter, times(1)).writeObject(eq(Hotel.TYPE_INDEX), eq(TYPE));
+        verify(pofWriter, times(1)).writeString(eq(Hotel.TYPE_INDEX), eq(TYPE.toString()));
         verify(pofWriter, times(1)).writeDouble(eq(Hotel.STARS_INDEX), eq(STARS));
         verify(pofWriter, times(1)).writeDouble(eq(Hotel.RATING_INDEX), eq(RATING));
-        verify(pofWriter, times(1)).writeObject(eq(Hotel.URL_INDEX), eq(URL));
+        verify(pofWriter, times(1)).writeString(eq(Hotel.URL_INDEX), eq(URL.toString()));
     }
 
     @Test
