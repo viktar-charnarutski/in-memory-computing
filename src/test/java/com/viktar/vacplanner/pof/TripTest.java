@@ -60,7 +60,7 @@ public class TripTest extends PofBeanTest<Trip> {
         when(pofReader.readLocalDate(Trip.END_DATE_INDEX)).thenReturn(END_DATE);
         when(pofReader.readObject(Trip.HOTEL_INDEX)).thenReturn(hotel);
         when(pofReader.readObject(Trip.PRICE_INDEX)).thenReturn(price);
-        when(pofReader.readObject(Trip.URL_INDEX)).thenReturn(URL);
+        when(pofReader.readString(Trip.URL_INDEX)).thenReturn(URL.toString());
 
         super.readExternal();
 
@@ -84,7 +84,7 @@ public class TripTest extends PofBeanTest<Trip> {
         verify(pofWriter, times(1)).writeDate(eq(Trip.END_DATE_INDEX), eq(END_DATE));
         verify(pofWriter, times(1)).writeObject(eq(Trip.PRICE_INDEX), eq(price));
         verify(pofWriter, times(1)).writeObject(eq(Trip.HOTEL_INDEX), eq(hotel));
-        verify(pofWriter, times(1)).writeObject(eq(Trip.URL_INDEX), eq(URL));
+        verify(pofWriter, times(1)).writeString(eq(Trip.URL_INDEX), eq(URL.toString()));
     }
 
     @Test
