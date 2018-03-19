@@ -26,7 +26,7 @@ public class AddressTest extends PofBeanTest<Address> {
         when(pofReader.readString(Address.CONTACT_NAME)).thenReturn(CONTACT_NAME);
         when(pofReader.readString(Address.ADDRESS_LINE)).thenReturn(ADDRESS_LINE);
         when(pofReader.readString(Address.CITY)).thenReturn(CITY);
-        when(pofReader.readObject(Address.STATE_US)).thenReturn(STATE_US);
+        when(pofReader.readString(Address.STATE_US)).thenReturn(STATE_US.toString());
         when(pofReader.readString(Address.REGION)).thenReturn(REGION);
         when(pofReader.readString(Address.ZIP_CODE)).thenReturn(ZIP_CODE);
         when(pofReader.readString(Address.COUNTRY)).thenReturn(COUNTRY);
@@ -50,7 +50,7 @@ public class AddressTest extends PofBeanTest<Address> {
         verify(pofWriter, times(1)).writeString(eq(Address.CONTACT_NAME), eq(CONTACT_NAME));
         verify(pofWriter, times(1)).writeString(eq(Address.ADDRESS_LINE), eq(ADDRESS_LINE));
         verify(pofWriter, times(1)).writeString(eq(Address.CITY), eq(CITY));
-        verify(pofWriter, times(1)).writeObject(eq(Address.STATE_US), eq(STATE_US));
+        verify(pofWriter, times(1)).writeString(eq(Address.STATE_US), eq(STATE_US.toString()));
         verify(pofWriter, times(1)).writeString(eq(Address.REGION), eq(REGION));
         verify(pofWriter, times(1)).writeString(eq(Address.ZIP_CODE), eq(ZIP_CODE));
         verify(pofWriter, times(1)).writeString(eq(Address.COUNTRY), eq(COUNTRY));
