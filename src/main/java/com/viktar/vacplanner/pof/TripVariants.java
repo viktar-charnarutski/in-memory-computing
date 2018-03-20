@@ -26,6 +26,11 @@ public class TripVariants extends AbstractEvolvable implements EvolvablePortable
     }
 
     @Override
+    public String toString() {
+        return String.format("TripVariants[tripVariants=%s]", tripVariants);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof TripVariants)) return false;
